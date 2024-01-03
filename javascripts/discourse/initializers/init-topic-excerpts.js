@@ -48,20 +48,25 @@ export default {
 
       @discourseComputed("excerptsViewingCategoryId", "excerptsViewingTag")
       expandPinned(viewingCategory, viewingTag) {
-        const overrideEverywhere =
-          enabledCategories.length === 0 && enabledTags.length === 0;
+      //  const overrideEverywhere =
+      //    enabledCategories.length === 0 && enabledTags.length === 0;
 
-        const overrideInCategory = enabledCategories.includes(viewingCategory);
-        const overrideInTag = enabledTags.includes(viewingTag);
+       // const overrideInCategory = enabledCategories.includes(viewingCategory);
+       // const overrideInTag = enabledTags.includes(viewingTag);
 
-        const overrideOnDevice = site.mobileView
-          ? settings.show_excerpts_mobile
-          : settings.show_excerpts_desktop;
+       // const overrideOnDevice = site.mobileView
+       //   ? settings.show_excerpts_mobile
+        //  : settings.show_excerpts_desktop;
 
-        return (overrideEverywhere || overrideInTag || overrideInCategory) &&
-          overrideOnDevice
-          ? true
-          : this._super();
+       // return (overrideEverywhere || overrideInTag || overrideInCategory) &&
+       //   overrideOnDevice
+        //  ? true
+        //  : this._super();
+
+          const isTopicListItem = this.constructor.name === 'component:topic-list-item';
+
+          // Disable hyperlink only for topic-list-item
+          return isTopicListItem ? false : this._super();
       },
     });
   },
